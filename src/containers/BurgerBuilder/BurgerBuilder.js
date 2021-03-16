@@ -23,6 +23,7 @@
         },
         totalPrice: 4,
         purchasable: false,
+        purchasing: false,
     }
 
     updatePurchaseState(ingredients) {
@@ -67,6 +68,10 @@
         this.updatePurchaseState(updatedIngredients);
     }
 
+    purchaseHandler = () => {
+        this.setState({purchasing: true});
+    }
+
     render() {
         const disabledInfo = {
             ...this.state.ingredients
@@ -76,7 +81,7 @@
         }
         return (
             <Aux>
-                <Modal>
+                <Modal show={this.state.purchasing}>
                     <OrderSummary ingredients={this.state.ingredients}/>
                 </Modal>
                 <Burger ingredients={this.state.ingredients}/>
@@ -86,6 +91,7 @@
                     disabled={disabledInfo}
                     purchasable={this.state.purchasable}
                     price={this.state.totalPrice}
+                    ordered={this.purchaseHandler}
                 />
             </Aux>
         );
