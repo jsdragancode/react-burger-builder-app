@@ -72,6 +72,10 @@
         this.setState({purchasing: true});
     }
 
+    purchaseCancelHandeler = () => {
+        this.setState({purchasing: false});
+    }
+
     render() {
         const disabledInfo = {
             ...this.state.ingredients
@@ -81,7 +85,7 @@
         }
         return (
             <Aux>
-                <Modal show={this.state.purchasing}>
+                <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandeler}>
                     <OrderSummary ingredients={this.state.ingredients}/>
                 </Modal>
                 <Burger ingredients={this.state.ingredients}/>
