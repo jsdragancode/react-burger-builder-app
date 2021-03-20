@@ -4,6 +4,13 @@ import Layout from './hoc/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 
 class App extends Component {
+    componentDidMount () {
+        setTimeout(() => {
+            this.setState({
+                show: false
+            });
+        }, 5000)
+    }
     render() {
         return (
             <div>
